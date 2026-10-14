@@ -37,4 +37,9 @@ public class InMemoryPrestamoRepository implements PrestamoRepository {
         almacen.put(prestamo.getIdPrestamo(), prestamo);
         return prestamo;
     }
+
+    @Override
+    public List<Prestamo> findAll() {
+        return new java.util.ArrayList<>(almacen.values());
+    }
 }

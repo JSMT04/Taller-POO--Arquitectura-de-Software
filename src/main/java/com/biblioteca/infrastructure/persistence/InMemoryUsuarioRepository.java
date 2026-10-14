@@ -28,4 +28,9 @@ public class InMemoryUsuarioRepository implements UsuarioRepository {
         almacen.put(usuario.getIdUsuario(), usuario);
         return usuario;
     }
+
+    @Override
+    public java.util.List<Usuario> findAll() {
+        return new java.util.ArrayList<>(almacen.values());
+    }
 }

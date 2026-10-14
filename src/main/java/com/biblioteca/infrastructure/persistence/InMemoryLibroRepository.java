@@ -43,4 +43,9 @@ public class InMemoryLibroRepository implements LibroRepository {
         }
         return libro;
     }
+
+    @Override
+    public java.util.List<Libro> findAll() {
+        return new java.util.ArrayList<>(librosPorIsbn.values());
+    }
 }

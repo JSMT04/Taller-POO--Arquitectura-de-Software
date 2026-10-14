@@ -24,4 +24,11 @@ public interface ReservaRepository {
      * @return la reserva persistida.
      */
     Reserva save(Reserva reserva);
+
+    /**
+     * Retorna todas las reservas registradas.
+     *
+     * @return lista de todas las reservas.
+     */
+    java.util.List<Reserva> findAll();
 }

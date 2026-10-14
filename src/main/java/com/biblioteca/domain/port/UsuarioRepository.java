@@ -25,4 +25,11 @@ public interface UsuarioRepository {
      * @return el usuario persistido.
      */
     Usuario save(Usuario usuario);
+
+    /**
+     * Retorna todos los usuarios registrados.
+     *
+     * @return lista de todos los usuarios.
+     */
+    java.util.List<Usuario> findAll();
 }

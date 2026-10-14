@@ -281,8 +281,8 @@ Ejecuta la suite de pruebas unitarias de las capas de Dominio y Aplicación:
 .\mvnw.cmd test
 ```
 
-### 3. Ejecución de la Aplicación y Demostración
-Inicia la aplicación de Spring Boot. Al arrancar, el componente `BibliotecaRunner` ejecuta automáticamente los tres escenarios demostrativos:
+### 3. Ejecución de la Aplicación y Menú Interactivo
+Inicia la aplicación de Spring Boot. Al arrancar, el componente `BibliotecaRunner` despliega una interfaz ligera de **Menú Interactivo por Consola** para probar manualmente cualquier operación del sistema o ejecutar la suite automática de demostración:
 ```bash
 ./mvnw spring-boot:run
 # En Windows PowerShell / CMD:
@@ -291,9 +291,41 @@ Inicia la aplicación de Spring Boot. Al arrancar, el componente `BibliotecaRunn
 
 ---
 
-## 🧪 Escenarios Demostrativos Ejecutados en el Runner
+## 💻 Menú Interactivo por Consola (Pruebas Manuales)
 
-Al iniciar la aplicación, `BibliotecaRunner` ejecuta paso a paso el siguiente flujo visible en consola:
+El sistema incluye una interfaz CLI en terminal diseñada para ser extremadamente ligera y eficiente en consumo de recursos, permitiendo probar cada flujo de negocio de forma manual e interactiva:
+
+```text
+===================================================================
+                        MENU PRINCIPAL
+===================================================================
+  [1] Ver catalogo de libros y ejemplares
+  [2] Ver usuarios registrados y cupos disponibles
+  [3] Ver historial de prestamos y reservas
+  [4] Registrar un nuevo prestamo (Manual)
+  [5] Procesar devolucion con calculo de multa (Manual)
+  [6] Crear una reserva de libro (Manual)
+  [7] Ejecutar demostracion automatica (Escenarios 1, 2 y 3)
+  [0] Salir
+-------------------------------------------------------------------
+  Seleccione una opcion: 
+```
+
+### Opciones Disponibles para Pruebas Manuales:
+- **`[1] Ver catálogo`**: Muestra los libros, autores, ISBN, disponibilidad general y el estado de cada ejemplar físico (`DISPONIBLE` o `PRESTADO`).
+- **`[2] Ver usuarios`**: Consulta estudiantes y docentes registrados, detallando el límite polimórfico (3 para estudiantes, 5 para docentes), ejemplares prestados actualmente y cupo libre restante.
+- **`[3] Ver préstamos y reservas`**: Lista todos los préstamos (activos/devueltos, fecha límite, ejemplares asociados) y las reservas pendientes registradas.
+- **`[4] Registrar un nuevo préstamo`**: Permite ingresar un ID de usuario (ej. `U001`, `U002`), uno o varios códigos de barras (ej. `CB-002-A`) y los días de plazo. Valida automáticamente disponibilidad y límite máximo de cupo.
+- **`[5] Procesar devolución`**: Permite ingresar el ID de un préstamo activo, cambia los ejemplares a `DISPONIBLE`, calcula la multa exacta según los días hábiles de mora y envía alertas polimórficas (correo y SMS).
+- **`[6] Crear reserva de libro`**: Permite reservar un libro mediante su ISBN. Aplica la regla **R7**: solo se permite la reserva si todos los ejemplares del libro están prestados; si hay copias disponibles, la reserva se rechaza.
+- **`[7] Ejecutar demostración automática`**: Corre de forma secuencial los 3 escenarios preconfigurados del taller descritos a continuación.
+- **`[0] Salir`**: Finaliza la ejecución de la aplicación.
+
+---
+
+## 🧪 Escenarios Demostrativos Automatizados (Opción 7)
+
+Al seleccionar la opción 7 del menú (o en ejecuciones automáticas), se ejecuta paso a paso el siguiente flujo en consola:
 
 1. **Escenario 1 — Verificación de Disponibilidad**:
    - Se consulta el libro *"Clean Code"*, el cual tiene todos sus ejemplares en estado `PRESTADO`.
@@ -315,3 +347,4 @@ Al iniciar la aplicación, `BibliotecaRunner` ejecuta paso a paso el siguiente f
 ## 👨‍💻 Autor
 - **Juan Sebastián Martelo Triviño**
 - Taller de Programación Orientada a Objetos y Arquitectura de Software
+

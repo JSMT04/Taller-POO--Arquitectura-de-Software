@@ -26,4 +26,9 @@ public class InMemoryReservaRepository implements ReservaRepository {
         almacen.put(reserva.getIdReserva(), reserva);
         return reserva;
     }
+
+    @Override
+    public java.util.List<Reserva> findAll() {
+        return new java.util.ArrayList<>(almacen.values());
+    }
 }

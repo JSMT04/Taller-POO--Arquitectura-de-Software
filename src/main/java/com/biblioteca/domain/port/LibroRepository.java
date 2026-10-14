@@ -33,4 +33,11 @@ public interface LibroRepository {
      * @return el libro persistido.
      */
     Libro save(Libro libro);
+
+    /**
+     * Retorna todos los libros registrados en el catálogo.
+     *
+     * @return lista de todos los libros.
+     */
+    java.util.List<Libro> findAll();
 }

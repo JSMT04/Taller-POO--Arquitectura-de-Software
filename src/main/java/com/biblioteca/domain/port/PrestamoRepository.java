@@ -33,4 +33,11 @@ public interface PrestamoRepository {
      * @return el préstamo persistido.
      */
     Prestamo save(Prestamo prestamo);
+
+    /**
+     * Retorna todos los préstamos registrados.
+     *
+     * @return lista de todos los préstamos.
+     */
+    List<Prestamo> findAll();
 }
