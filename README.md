@@ -313,5 +313,5 @@ Al iniciar la aplicación, `BibliotecaRunner` ejecuta paso a paso el siguiente f
 ---
 
 ## 👨‍💻 Autor
-- **Juan Sebastián Martelo**
+- **Juan Sebastián Martelo Triviño**
 - Taller de Programación Orientada a Objetos y Arquitectura de Software
